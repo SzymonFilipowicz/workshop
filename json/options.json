@@ -1,0 +1,74 @@
+{
+  "0": {
+    "text": "lol",
+    "connections": "1,2,",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "205px",
+    "y": "375px"
+  },
+  "1": {
+    "text": "Play",
+    "connections": "",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "438px",
+    "y": "136px"
+  },
+  "2": {
+    "text": "Options",
+    "connections": "3,4,5,",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "458px",
+    "y": "405px"
+  },
+  "3": {
+    "text": "Game",
+    "connections": "6,7,8,",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "691px",
+    "y": "227px"
+  },
+  "4": {
+    "text": "Graphic",
+    "connections": "",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "699px",
+    "y": "357px"
+  },
+  "5": {
+    "text": "Back",
+    "connections": "1,2,",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "693px",
+    "y": "488px"
+  },
+  "6": {
+    "text": "FF",
+    "connections": "",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "896px",
+    "y": "95px"
+  },
+  "7": {
+    "text": "Voice chat",
+    "connections": "",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "899px",
+    "y": "189px"
+  },
+  "8": {
+    "text": "Back",
+    "connections": "3,4,5,",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "900px",
+    "y": "320px"
+  }
+}

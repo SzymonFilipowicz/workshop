@@ -1,0 +1,38 @@
+{
+  "0": {
+    "text": "Witaj",
+    "connections": "1,2,",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "243px",
+    "y": "256px",
+    "character": "John"
+  },
+  "1": {
+    "text": "Tak",
+    "connections": "3,",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "798px",
+    "y": "471px",
+    "character": "Bob"
+  },
+  "2": {
+    "text": "Nie",
+    "connections": "3,",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "566px",
+    "y": "606px",
+    "character": "Bob"
+  },
+  "3": {
+    "text": "Do widzenia",
+    "connections": "",
+    "condition": "undefined",
+    "trigger": "undefined",
+    "x": "1140px",
+    "y": "553px",
+    "character": "John"
+  }
+}
