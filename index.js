@@ -15,13 +15,7 @@ homeButtonClicked = (navigate) => {                     // this function is glob
 
 
 //creating collection of memory boxes. In one iteration we create two matching boxes
-this.collection = [];
-for(let i=0; i<(this.howManyInRow*HowManyInColumn)/2; i++)
-{
-  this.collection[i*2]=i;
-  this.collection[i*2+1]=i;
-}
-shuffle(this.collection);
+/* creating mix collection that recognize boxes color goes here */
 
 getCol = (index) => {
   return   this.entitiesGlobal[index]["pair"];

@@ -21,7 +21,7 @@ class HomeScreen extends React.Component {
     };
   }
   toggleStatus = () => {
-
+alert("B");
     this.setState({
       status: !this.state.status
     });
@@ -44,7 +44,7 @@ class HomeScreen extends React.Component {
       navigate
     } = this.props.navigation;                           // We are assigning nav from properties to local variable
 
-    /* 
+    /*
     Dialogue layout has action property called from child and send to child property 'dialogueText' with 'dialogueData'
     */
     return (

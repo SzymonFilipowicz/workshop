@@ -92,8 +92,7 @@ class DialogueLayout extends React.Component {
           textToAdd = coordName+":\n " + textToAdd;
         }*/
       }
-    //  alert(charactersPosition[coordName]);
-//alert(tempCoord.x);
+
 
 
       newly_added_data = { key:dialogueID, x:tempCoord.x, y:tempCoord.y, title: textToAdd, content: 'new content goes here' };
@@ -151,6 +150,7 @@ class DialogueLayout extends React.Component {
       }
   }
   startDialogue = ()  =>   {
+    //calling action can go here
     if(dialogueScrollMode==0) {
       speechID=-1;
       this._handleAddButton(1, true); //1 because it is (true) starting speech
@@ -158,9 +158,7 @@ class DialogueLayout extends React.Component {
       speechID=0;
       this._handleAddButton(this.currentSpeech.connections.length-1, false); //1 because it is (true) starting speech
     }
-    //alert('c');
-    //call this function to start loaded dialogue
-      }
+  }
 
   loadDialogueJson = ()  =>  {
 
@@ -210,7 +208,8 @@ class DialogueLayout extends React.Component {
       /*Button onPress = {
         this.props.action
       }*/
-      Button onPress = {this.startDialogue}
+      //code below is calling only one of the function!
+      Button onPress = {this.startDialogue, this.props.action}
       title = {this.state.dialogueText}
       color = "#841584"
       accessibilityLabel = "Start Dialogue" /

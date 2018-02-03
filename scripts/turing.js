@@ -42,13 +42,14 @@ class TuringLayout extends PureComponent {
              We are changing letter 'a' into 'Y' (can be whatever, but same
              across all machine) and moving into another state (1)
           */
-          stream = stream.substring(0, currentIndex) + 'Y' + stream.substring(currentIndex+1);
+
+          //code to change char goes here (1)
           currentIndex++;                   // We chacked current letter so we can increase index
           return 1;                         // We accept this situation and changing to state 1
         } else if(currentLetter=='Y') {     // If it's not the first iteration,
           currentIndex++;                   // we need to move thru 'Y' that were 'a' before
           return 0;                         // We still need to find 'a'
-        } else if(currentLetter=='X') {     // When we reached 'X' it means the word was empty
+        } if(/*code to win state goes here (2)*/)      // When we reached 'X' it means the word was empty
           return endStatus;                 // so cool (n=0) or we changed all letters to 'Y' correctly
         } else {
           return -1;                        // if we get anything else word is wrong (-1 will break machine)
@@ -59,7 +60,7 @@ class TuringLayout extends PureComponent {
           currentIndex++;
           return 1;
         } else if(currentLetter=='b') {     //changing first 'b'
-          stream =  stream.substring(0, currentIndex) + 'Y' + stream.substring(currentIndex+1);
+          //code 1 goes here
           currentIndex++;
           return 2;                         //changing to state 2 where we will look for 2nd 'b'
         } else {
@@ -68,7 +69,7 @@ class TuringLayout extends PureComponent {
         break;
       case 2 :
         if(currentLetter=='b') {            //changing 2nd 'b'
-          stream =  stream.substring(0, currentIndex) + 'Y' + stream.substring(currentIndex+1);
+          //code 1 goes here
           currentIndex++;
           return 3;                         //now we need to find three 'c'
         } else {
@@ -80,7 +81,7 @@ class TuringLayout extends PureComponent {
           currentIndex++;
           return 3;
         } else if(currentLetter=='c') {                 //changing first 'c'
-          stream =  stream.substring(0, currentIndex) + 'Y' + stream.substring(currentIndex+1);
+          //code 1 goes here
           currentIndex++;
           return 4;
         } else {
@@ -89,7 +90,7 @@ class TuringLayout extends PureComponent {
         break;
       case 4 :
         if(currentLetter=='c') {                        //changing 2nd 'c'
-          stream =  stream.substring(0, currentIndex) + 'Y' + stream.substring(currentIndex+1);
+          //code goes here
           currentIndex++;
           return 5;
         } else {
@@ -98,7 +99,7 @@ class TuringLayout extends PureComponent {
         break;
       case 5 :
         if(currentLetter=='c') {                       //changing 3rd 'c'
-          stream =  stream.substring(0, currentIndex) + 'Y' + stream.substring(currentIndex+1);
+          //code 1 goes here
           currentIndex++;
           return 6;
         } else {
@@ -106,8 +107,8 @@ class TuringLayout extends PureComponent {
         }
         break;
       case 6 :                                        // If we changed 3rd 'c' we can go
-        currentIndex = 0;                             // at start of the word and do all again
-        return 0;
+        //we properly changes characters, what now?                            // at start of the word and do all again
+        //two lines of code goes here to continue alghoritm
         break;
       default :
         break;
