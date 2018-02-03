@@ -207,7 +207,8 @@ class DialogueLayout extends React.Component {
       /Text>
 
       <
-      /*Button onPress = {
+      /* this is how we call action function from parent
+      Button onPress = {
         this.props.action
       }*/
       Button onPress = {this.startDialogue}

@@ -14,6 +14,10 @@ const MoveFinger = (entities, {
     targetX = Math.floor(touches[0].event.pageX / (this.boxWidth + this.marginGame * 2));
     targetY = Math.floor(touches[0].event.pageY / (this.boxWidth + this.marginGame * 2));
     currentID = targetX + targetY * howManyInRow;
+
+    //we set up clicked index to show up
+    this.clicked = currentID;
+
     //we need to save position of box in case of false compare
     if (currentID < howManyInRow * HowManyInColumn) {
       goBackX = entities[currentID].position[0];
@@ -27,9 +31,15 @@ const MoveFinger = (entities, {
     let targetY2 = Math.floor(touches[0].event.pageY / (this.boxWidth + this.marginGame * 2));
     checkedID = targetX2 + targetY2 * howManyInRow;
 
+    //we set up new index to show up
+    this.clickedP = checkedID;
+
     //simple timeout to make sure user see chosen pair
     if (checkedID < howManyInRow * HowManyInColumn) { //be sure if not fire unnesesery
       setTimeout(function() {   //it will start after 1s.
+
+        this.clickedP = this.clicked = -1;
+
         this.opacityAll = 0;
         entities[checkedID].position = [this.marginGame + targetX2 * this.boxWidth + ((this.marginGame * 2) * (targetX2)),
           this.marginGame + targetY2 * this.boxWidth + ((this.marginGame) * (targetY2))

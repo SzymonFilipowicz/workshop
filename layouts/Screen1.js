@@ -12,7 +12,6 @@ import {
 import Communications from 'react-native-communications';
 import { GameEngine } from "react-native-game-engine";
 
-//import { Finger, Rect } from "../scripts/game/renderers";
 import { MoveFinger } from "../scripts/game/systems";
 
 //this is global function used to make phone call from App
