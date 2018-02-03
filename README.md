@@ -34,17 +34,17 @@ Code above is setting flag every time we reach maximum number of boxes on the sc
   }
 </code></pre><br><br>
 2. Add 'brown' color to colors collection in renderer.js.
-Next thing we can do is add two flags (because only two boxes can show theyre two colors at the same time) into index.js (where our getCol function take place)<br>
+Next thing we can do is add two flags (because only two boxes can show theyre two colors at the same time) into index.js (where our getCol function take place)
 <pre><code>
-  this.clicked = -1;                       <br />
-  this.clickedP = -1;
+this.clicked = -1;                       
+this.clickedP = -1;
 </code></pre>
 
 These will point index of boxes we want to see. To do this we need to set up proper value every time we interact with any box 
 First flag need to be set up when we starting press any box, so add tihs after 'currentID' is known in
 'touches.filter(t => t.type === "start").forEach(t => {})'<br />
 <pre><code>
-  this.clicked = currentID; //add this to the </code></pre>
+  this.clicked = currentID; </code></pre>
 And 2nd flag need to be when we stop pressing screen after checkedID is calculeted in 'touches.filter(t => t.type === "end").forEach(t => {})'<br />
 <pre><code>this.clickedP = checkedID;</code></pre>
 If we have this, we just need to configure getCol function to properly return variables <br /><br />
