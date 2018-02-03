@@ -9,7 +9,7 @@ How to :
 <code>
 npm install
 sudo react-native run-android
-</code><br>
+</code><br><br><br>
 
 To do in practise branch :
 1. Remove error from re-entering into game
