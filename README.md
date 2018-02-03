@@ -6,10 +6,10 @@ How to :
 2. Set up SDK environment path properly in 'Android/local.properties'
 3. Turn on emulator
 4. Turn on project by typing (sudo is in case of error during connecting to emulator)
-<code>
+<pre><code>
 npm install
 sudo react-native run-android
-</code><br><br><br>
+</code></pre><br><br><br>
 
 To do in practise branch :
 1. Remove error from re-entering into game
@@ -22,38 +22,38 @@ To do in practise branch :
 Solve :
 1. Error appears because we have index of every box stored in local variable (this.whatAlready=whatAlready).
 Because react is calling constructor function every time it's rebuild, we need to zero our index every time we finish constructing all boxes. To do this, add at the end of Rect constructor function code below :
-<code>
+<pre><code>
   if(whatAlready==(howManyInRow*HowManyInColumn))  // We can't use 'this.' because it's pointg at component
       restartIndex= true;                             // we need to set up flag for next Rect call
-</code>
+</code></pre>
 Code above is setting flag every time we reach maximum number of boxes on the screen. Next thing to do is zero our counter at the beggining of constructor. 
-<code>
+<pre><code>
   if(restartIndex) {         // When flag is set up it means user re-entered to this view
       whatAlready=0;
       restartIndex=false;
   }
-</code><br><br>
+</code></pre><br><br>
 2. Add 'brown' color to colors collection in renderer.js.
 Next thing we can do is add two flags (because only two boxes can show theyre two colors at the same time) into index.js (where our getCol function take place)<br>
-<code>
+<pre><code>
   this.clicked = -1;                       <br />
   this.clickedP = -1;
-  </code>
+</code></pre>
 
 These will point index of boxes we want to see. To do this we need to set up proper value every time we interact with any box 
 First flag need to be set up when we starting press any box, so add tihs after 'currentID' is known in
 'touches.filter(t => t.type === "start").forEach(t => {})'<br />
-<code>
-  this.clicked = currentID; //add this to the </code>
+<pre><code>
+  this.clicked = currentID; //add this to the </code></pre>
 And 2nd flag need to be when we stop pressing screen after checkedID is calculeted in 'touches.filter(t => t.type === "end").forEach(t => {})'<br />
-<code>this.clickedP = checkedID;</code><br />
+<pre><code>this.clickedP = checkedID;</code></pre>
 If we have this, we just need to configure getCol function to properly return variables <br /><br />
-<code>
+<pre><code>
   getCol = (index) => {
   if(index==clicked || index==clickedP)
     return this.entitiesGlobal[index]["pair"];
   else
     return numberOfColors;    //this is last index of color collection
 }
-</code><br />
+</code></pre>
 After that we can just remove coverage boxes in layout and remove opacity property from boxes. 
