@@ -9,7 +9,7 @@ How to :
 <pre><code>
 npm install
 sudo react-native run-android
-</code></pre><br><br><br>
+</code></pre><br>
 
 To do in practise branch :
 1. Remove error from re-entering into game
@@ -33,7 +33,7 @@ Code above is setting flag every time we reach maximum number of boxes on the sc
       restartIndex=false;
   }
 </code></pre><br><br>
-2. Add 'brown' color to colors collection in renderer.js.
+2. Add 'brown' color at the end of colors collection in renderer.js.
 Next thing we can do is add two flags (because only two boxes can show theyre two colors at the same time) into index.js (where our getCol function take place)
 <pre><code>
 this.clicked = -1;                       
@@ -42,7 +42,7 @@ this.clickedP = -1;
 
 These will point index of boxes we want to see. To do this we need to set up proper value every time we interact with any box 
 First flag need to be set up when we starting press any box, so add tihs after 'currentID' is known in
-'touches.filter(t => t.type === "start").forEach(t => {})'<br />
+'touches.filter(t => t.type === "start").forEach(t => {})' in systems.js<br />
 <pre><code>
   this.clicked = currentID; </code></pre>
 And 2nd flag need to be when we stop pressing screen after checkedID is calculeted in 'touches.filter(t => t.type === "end").forEach(t => {})'<br />
