@@ -34,20 +34,20 @@ Code above is setting flag every time we reach maximum number of boxes on the sc
   }
 </code><br><br>
 2. Add 'brown' color to colors collection in renderer.js.
-Next thing we can do is add two flags (because only two boxes can show theyre two colors at the same time) into index.js (where our getCol function take place)
+Next thing we can do is add two flags (because only two boxes can show theyre two colors at the same time) into index.js (where our getCol function take place)<br>
 <code>
-  this.clicked = -1;
+  this.clicked = -1;                       <br />
   this.clickedP = -1;
   </code>
 
 These will point index of boxes we want to see. To do this we need to set up proper value every time we interact with any box 
 First flag need to be set up when we starting press any box, so add tihs after 'currentID' is known in
-'touches.filter(t => t.type === "start").forEach(t => {})'
+'touches.filter(t => t.type === "start").forEach(t => {})'<br />
 <code>
   this.clicked = currentID; //add this to the </code>
-And 2nd flag need to be when we stop pressing screen after checkedID is calculeted in 'touches.filter(t => t.type === "end").forEach(t => {})'
-<code>this.clickedP = checkedID;</code>
-If we have this, we just need to configure getCol function to properly return variables :
+And 2nd flag need to be when we stop pressing screen after checkedID is calculeted in 'touches.filter(t => t.type === "end").forEach(t => {})'<br />
+<code>this.clickedP = checkedID;</code><br />
+If we have this, we just need to configure getCol function to properly return variables <br /><br />
 <code>
   getCol = (index) => {
   if(index==clicked || index==clickedP)
@@ -55,5 +55,5 @@ If we have this, we just need to configure getCol function to properly return va
   else
     return numberOfColors;    //this is last index of color collection
 }
-</code>
+</code><br />
 After that we can just remove coverage boxes in layout and remove opacity property from boxes. 
