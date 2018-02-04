@@ -90,7 +90,7 @@ class TuringLayout extends PureComponent {
         break;
       case 4 :
         if(currentLetter=='c') {                        //changing 2nd 'c'
-          //code goes here
+          //code 1 goes here
           currentIndex++;
           return 5;
         } else {
