@@ -57,3 +57,47 @@ If we have this, we just need to configure getCol function to properly return va
 }
 </code></pre>
 After that we can just remove coverage boxes in layout and remove opacity property from boxes. 
+<br><br>
+6. Firstly we need to add another mapped component. First declare new array as state
+
+Then add new mapped component as new variable 
+<pre><code>
+let options_button = this.state.optionsGraphic.map( (optionsGraphic, index) => {
+        return (
+          	&lt;View style={{ left:0, top:0, width:"50%" }} key={optionsGraphic.key}>
+            	&lt;Button style={{ flex:1, width:"50%" }}  key={optionsGraphic.key} title={optionsGraphic.tittle}
+              onPress={ () => this.nativeFunc() } />
+            	&lt;Picker
+              selectedValue={this.state.language}
+              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+              	&lt;Picker.Item label="Java" value="java" />
+              	&lt;Picker.Item label="JavaScript" value="js" />
+            	&lt;/Picker>
+          	&lt;/View>
+        )
+    });
+            </code></pre>
+Next, create renderif file as follow 
+<pre><code>
+'use strict';
+const isFunction = input => typeof input === 'function';
+export default predicate => elemOrThunk =>
+  predicate ? (isFunction(elemOrThunk) ? elemOrThunk() : elemOrThunk) : null;
+        </code></pre>
+Then use it in render section of DialogueLayout 
+<pre><code>
+{renderIf(this.currentSpeech.text === "Graphic")(
+              options_button
+)}
+{renderIf(this.currentSpeech.text === "Graphic")(
+    	&lt;Button style={{ flex: 1}}
+        title="back"
+        onPress={this.startDialogue}
+    />
+)}
+</code></pre>
+  As final touch, add code above at the beggining of 'startDialogue' function 
+  <pre><code>
+  this.loadDialogueJson();
+  </code></pre>
+

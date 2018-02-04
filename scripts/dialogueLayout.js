@@ -151,6 +151,7 @@ class DialogueLayout extends React.Component {
       }
   }
   startDialogue = ()  =>   {
+    this.loadDialogueJson();
     if(dialogueScrollMode==0) {
       speechID=-1;
       this._handleAddButton(1, true); //1 because it is (true) starting speech
@@ -187,15 +188,20 @@ class DialogueLayout extends React.Component {
           </View>
         )
     });
-    let options_button = this.state.data.map( (data, index) => {
+    let options_button = this.state.optionsGraphic.map( (optionsGraphic, index) => {
         return (
-          <View style={{ left:data.x, top:data.y, width:"50%" }} key={data.key}>
-            <Button style={{ flex:1, width:"50%" }}  key={data.key} title={data.title}
-              onPress={ () => this.goToNextSpeech(data.key) } />
+          <View style={{ left:0, top:0, width:"50%" }} key={optionsGraphic.key}>
+            <Button style={{ flex:1, width:"50%" }}  key={optionsGraphic.key} title={optionsGraphic.tittle}
+              onPress={ () => this.nativeFunc() } />
+            <Picker
+              selectedValue={this.state.language}
+              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+              <Picker.Item label="Java" value="java" />
+              <Picker.Item label="JavaScript" value="js" />
+            </Picker>
           </View>
         )
     });
-
     return ( <
       View style={{ flex: 1,   alignItems: 'center', width:"100%", backgroundColor: '#333333'}}>
           <View style={{ flex: 1,  width:"80%", backgroundColor: '#841584'}}>
