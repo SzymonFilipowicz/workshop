@@ -4,7 +4,8 @@ import {
   View,
   Text,
     StyleSheet,
-  Button
+  Button,
+  Picker
 } from 'react-native';
 import renderIf from './renderif';
 
