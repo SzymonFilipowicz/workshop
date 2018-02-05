@@ -12,8 +12,9 @@ homeButtonClicked = (navigate) => {                     // this function is glob
   navigate('Screen1')                                   // that way we can handle navigator
 };                                                      // from one file
 
-
-
+this.clicked = -1;
+this.clickedP = -1;
+let numberOfColors = (this.howManyInRow*HowManyInColumn)/2;
 //creating collection of memory boxes. In one iteration we create two matching boxes
 this.collection = [];
 for(let i=0; i<(this.howManyInRow*HowManyInColumn)/2; i++)
@@ -24,7 +25,10 @@ for(let i=0; i<(this.howManyInRow*HowManyInColumn)/2; i++)
 shuffle(this.collection);
 
 getCol = (index) => {
-  return   this.entitiesGlobal[index]["pair"];
+  if(index==clicked || index==clickedP)
+    return this.entitiesGlobal[index]["pair"];
+  else
+    return numberOfColors;    //this is last index of color collection
 }
 
 //we are creating objects used to present memory boxes
