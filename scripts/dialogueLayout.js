@@ -210,6 +210,17 @@ class DialogueLayout extends React.Component {
       View style={{ flex: 1,   alignItems: 'center', width:"100%", backgroundColor: '#333333'}}>
           <View style={{ flex: 1,  width:"80%", backgroundColor: '#841584'}}>
             {added_buttons_goes_here}
+            {renderIf(this.currentSpeech.text === "Graphic")(
+              options_button
+
+            )}
+            {renderIf(this.currentSpeech.text === "Graphic")(
+              <Button style={{ flex: 1}}
+                title="back"
+                onPress={this.startDialogue}
+              />
+
+            )}
           </View>
       <Text >
       {this.props.dialogueText}
