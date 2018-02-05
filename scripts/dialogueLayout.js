@@ -44,12 +44,16 @@ class DialogueLayout extends React.Component {
     this._handleAddButton = this._handleAddButton.bind(this);
 
     this.state = {
+      optionsGraphic: [],
+
       data: [],
       dialogueText: this.loadDialogueJson(),
       speechID: -1
     };
 
-    //TUTAJ ZMIEN TRYB NA NIE AUTOMATYCZNE ODPOWIEDZI
+    this.state.optionsGraphic.push({tittle:"FOV", key:0});
+    this.state.optionsGraphic.push({tittle:"BLOOD", key:1});
+    this.state.optionsGraphic.push({tittle:"BLUR", key:2});
 
   }
 
