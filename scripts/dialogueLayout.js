@@ -6,6 +6,7 @@ import {
     StyleSheet,
   Button
 } from 'react-native';
+import renderIf from './renderif';
 
 //properties are only as var
 var dialogueScrollMode = 1;
