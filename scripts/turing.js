@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { Text, StyleSheet, View, Dimensions, Button } from "react-native";
 
 /* a^n b^2n c^3n */
-let goToNextBtnStr = "Start";
+let goToNextBtnStr = "Turing";
 let endStatus = 7;               // what state is final
 let currentState=0;              // we start at state 0
 let currentLetter = 'X';         // starting from X but doesn't really matter

@@ -16,7 +16,7 @@ class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      btnText: 'Welcome Home23',
+      btnText: 'Simple test',
       status:true
     };
   }
@@ -44,7 +44,7 @@ class HomeScreen extends React.Component {
       navigate
     } = this.props.navigation;                           // We are assigning nav from properties to local variable
 
-    /* 
+    /*
     Dialogue layout has action property called from child and send to child property 'dialogueText' with 'dialogueData'
     */
     return (

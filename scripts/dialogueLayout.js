@@ -157,6 +157,7 @@ class DialogueLayout extends React.Component {
       }
   }
   startDialogue = ()  =>   {
+    this.cleanAllDialogueOptions();
     this.loadDialogueJson();
     if(dialogueScrollMode==0) {
       speechID=-1;
@@ -183,7 +184,9 @@ class DialogueLayout extends React.Component {
   changeDialogueBase(id) {
       this.currentDialogue = getNewDialogue(id);
   }
-
+  nativeFunc() {
+    ToastAndroid.show("Hello Android", ToastAndroid.SHORT);
+  }
 
   render() {
     let added_buttons_goes_here = this.state.data.map( (data, index) => {
