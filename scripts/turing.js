@@ -49,7 +49,7 @@ class TuringLayout extends PureComponent {
         } else if(currentLetter=='Y') {     // If it's not the first iteration,
           currentIndex++;                   // we need to move thru 'Y' that were 'a' before
           return 0;                         // We still need to find 'a'
-        } if(/*code to win state goes here (2)*/)      // When we reached 'X' it means the word was empty
+        } if(true /*code to win state goes here (2)*/) {     // When we reached 'X' it means the word was empty
           return endStatus;                 // so cool (n=0) or we changed all letters to 'Y' correctly
         } else {
           return -1;                        // if we get anything else word is wrong (-1 will break machine)

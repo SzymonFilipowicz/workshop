@@ -13,7 +13,12 @@ homeButtonClicked = (navigate) => {                     // this function is glob
 };                                                      // from one file
 
 
-
+this.collection = [];
+let numberOfColors = (this.howManyInRow*HowManyInColumn);
+for(let i=0; i<numberOfColors; i++)
+{
+  this.collection[i]=0;
+}
 //creating collection of memory boxes. In one iteration we create two matching boxes
 /* creating mix collection that recognize boxes color goes here */
 
