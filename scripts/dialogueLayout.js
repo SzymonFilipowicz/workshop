@@ -64,7 +64,6 @@ class DialogueLayout extends React.Component {
 
     let newly_added_data;
     let textToAdd = "";
-    //alert(howMany+" vs "+this.currentSpeech.connections.length+" vs "+this.currentSpeech.connections);
     for(let i=0; i<howMany; i++){
       let characterID = 0;
       if(start)
@@ -76,8 +75,7 @@ class DialogueLayout extends React.Component {
 
       let tempCoord = {x:defaultX, y:defaultY};
       if(this.currentDialogue[characterID].character) {
-        let coordName = this.currentDialogue[characterID].character;//this.currentDialogue[characterID].character;
-      //  alert(characterID+" vs "+this.currentDialogue[characterID].character);
+        let coordName = this.currentDialogue[characterID].character;
         if(charactersPosition[coordName]!=undefined)
           tempCoord = charactersPosition[coordName];
         /*if(tempCoord==undefined) {
@@ -94,12 +92,9 @@ class DialogueLayout extends React.Component {
           default :
             break;
         }
-      /*  if(characterLabelMode==1) {
-          textToAdd = coordName+":\n " + textToAdd;
-        }*/
+
       }
-    //  alert(charactersPosition[coordName]);
-//alert(tempCoord.x);
+
 
 
       newly_added_data = { key:dialogueID, x:tempCoord.x, y:tempCoord.y, title: textToAdd, content: 'new content goes here' };
