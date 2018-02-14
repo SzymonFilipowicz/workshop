@@ -6,5 +6,9 @@
     {
         "merged": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/Workshop/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
         "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/Workshop/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/home/maupa/Desktop/Work/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/home/maupa/Desktop/Work/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v23/abc_color_highlight_material.xml"
     }
 ]

@@ -3,9 +3,10 @@ import {
   ToastAndroid,
   View,
   Text,
-    StyleSheet,
+  StyleSheet,
   Button,
-  Picker
+  Picker,
+  Slider
 } from 'react-native';
 import renderIf from './renderif';
 
@@ -32,12 +33,11 @@ function loadAllDialogues() {
 this.currentDialogue = [];
 this.currentSpeech = [];
 let dialogueID=0;
-
+//    var speechID = -1;    //we don't need to initiate it in fact
 
 function getNewDialogue(id) {
   return this.allDialogues[id];
 }
-
 
 class DialogueLayout extends React.Component {
   constructor(props) {
@@ -47,21 +47,17 @@ class DialogueLayout extends React.Component {
 
     this.state = {
       optionsGraphic: [],
-
+      value:0,  //if you remove this line it will sitll work but won't show value at first
       data: [],
       dialogueText: this.loadDialogueJson(),
-      speechID: -1
     };
 
     this.state.optionsGraphic.push({tittle:"FOV", key:0});
     this.state.optionsGraphic.push({tittle:"BLOOD", key:1});
     this.state.optionsGraphic.push({tittle:"BLUR", key:2});
-
   }
 
-
   _handleAddButton(howMany=1, start=false) {
-
     let newly_added_data;
     let textToAdd = "";
     for(let i=0; i<howMany; i++){
@@ -130,26 +126,27 @@ class DialogueLayout extends React.Component {
   goToNextSpeech(key) {
     if(speechID==-1 ) {
       speechID=0;
-        alert('b');
+
     }
-    else
+    else {
       speechID=this.currentDialogue[speechID].connections[key];
+    }
 
-      this.currentSpeech = this.currentDialogue[speechID];
-      this.cleanAllDialogueOptions();
+    this.currentSpeech = this.currentDialogue[speechID];
+    this.cleanAllDialogueOptions();
 
-      if(Array.isArray(this.currentSpeech.connections)==false)
-      {
-        this.currentSpeech.connections = this.currentSpeech.connections.split(',');
-      }
-      let tempLength = this.currentSpeech.connections.length;
-      if(tempLength>0) {
-        this._handleAddButton(tempLength-1);
-        this.setState({dialogueText: this.currentSpeech.text});
-      } else {
-        this.setState({dialogueText: this.currentSpeech.text});
-        this.endTalk();
-      }
+    if(Array.isArray(this.currentSpeech.connections)==false)
+    {
+      this.currentSpeech.connections = this.currentSpeech.connections.split(',');
+    }
+    let tempLength = this.currentSpeech.connections.length;
+    if(tempLength>0) {
+      this._handleAddButton(tempLength-1);
+      this.setState({dialogueText: this.currentSpeech.text});
+    } else {
+      this.setState({dialogueText: this.currentSpeech.text});
+      this.endTalk();
+    }
   }
   startDialogue = ()  =>   {
     this.cleanAllDialogueOptions();
@@ -161,12 +158,10 @@ class DialogueLayout extends React.Component {
       speechID=0;
       this._handleAddButton(this.currentSpeech.connections.length-1, false); //1 because it is (true) starting speech
     }
-    //alert('c');
     //call this function to start loaded dialogue
       }
 
   loadDialogueJson = ()  =>  {
-
     loadAllDialogues();
     this.changeDialogueBase(startingID);
     this.currentSpeech = this.currentDialogue[0]; //0 is starting text
@@ -181,6 +176,12 @@ class DialogueLayout extends React.Component {
   }
   nativeFunc() {
     ToastAndroid.show("Hello Android", ToastAndroid.SHORT);
+  }
+
+  //we need to simulate variables as if we click option button
+  goBackToOptions() {
+    speechID=0; //option button is visible at first view
+    this.goToNextSpeech(1); //and we click second button (option button)
   }
 
   render() {
@@ -206,26 +207,29 @@ class DialogueLayout extends React.Component {
           </View>
         )
     });
-    return ( <
-      View style={{ flex: 1,   alignItems: 'center', width:"100%", backgroundColor: '#333333'}}>
+    return (
+      <View style={{ flex: 1,   alignItems: 'center', width:"100%", backgroundColor: '#333333'}}>
           <View style={{ flex: 1,  width:"80%", backgroundColor: '#841584'}}>
             {added_buttons_goes_here}
             {renderIf(this.currentSpeech.text === "Graphic")(
-              options_button
-
-            )}
-            {renderIf(this.currentSpeech.text === "Graphic")(
+              <View>
+              {options_button}
+              <Slider
+                value={this.state.value}
+                onValueChange={(value) => this.setState({value})} />
+              <Text>Value: {this.state.value}</Text>
               <Button style={{ flex: 1}}
                 title="back"
-                onPress={this.startDialogue}
+                onPress={() => this.goBackToOptions()}
               />
-
+              </View>
             )}
+            {/* we can merge both renderIf with View */}
           </View>
       <Text >
-      {this.props.dialogueText}
-      Dialogue text should be here <
-      /Text>
+        {this.props.dialogueText}
+        Dialogue text should be here
+      </Text>
 
       <
       /* this is how we call action function from parent

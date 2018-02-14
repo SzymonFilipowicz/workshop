@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/maupa/Desktop/Work/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/home/maupa/Desktop/Work/InFullMobile/reactNative/From Git/workshop/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/Workshop/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
         "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/Workshop/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
