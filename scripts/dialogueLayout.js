@@ -29,7 +29,6 @@ function loadAllDialogues() {
   /* set up character position by name */
 }
 
-
 this.currentDialogue = [];
 this.currentSpeech = [];
 let dialogueID=0;
