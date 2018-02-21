@@ -26,7 +26,7 @@ class Rect extends PureComponent {
       whatAlready=0;
       restartIndex=false;
     }
-    
+
     //here we have actual index of box, constructor is called every time it's called
     this.whatAlready=whatAlready;
     whatAlready++;

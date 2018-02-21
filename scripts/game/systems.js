@@ -6,15 +6,19 @@ let currentID = 0;
 
 let allowClick = true;
 
+function calculateBoxFromCoord(pageX, pageY) {
+  targetX = Math.floor(pageX / (this.boxWidth + this.marginGame * 2));
+  targetY = Math.floor(pageY / (this.boxWidth + this.marginGame * 2));
+  return (targetX + targetY * howManyInRow);
+}
+
 const MoveFinger = (entities, {touches}) => {
   //filter every entry for press event
   touches.filter(t => t.type === "start").forEach(t => {
+    //we need to block clicking as long as two colors are visible
     if (allowClick) {
       //we need to recognize what box are we pressing
-      targetX = Math.floor(touches[0].event.pageX / (this.boxWidth + this.marginGame * 2));
-      targetY = Math.floor(touches[0].event.pageY / (this.boxWidth + this.marginGame * 2));
-      currentID = targetX + targetY * howManyInRow;
-
+      currentID = calculateBoxFromCoord(touches[0].event.pageX, touches[0].event.pageY);
       //we set up clicked index to show up
       this.clicked = currentID;
 
@@ -22,39 +26,27 @@ const MoveFinger = (entities, {touches}) => {
       if (currentID < howManyInRow * HowManyInColumn) {
         goBackX = entities[currentID].position[0];
         goBackY = entities[currentID].position[1];
-        this.opacityAll = 100; //we are making visible the actual box
-
       }
     }
   });
   //filter every entry for end pressing event
   touches.filter(t => t.type === "end").forEach(t => {
-    if (allowClick && currentID>=0) {
-      allowClick = false;
+    if (allowClick && currentID>=0 && currentID<howManyInRow * HowManyInColumn) { //check if game should react on end of click
+      allowClick = false;             //we can block clicking here
 
-      let targetX2 = Math.floor(touches[0].event.pageX / (this.boxWidth + this.marginGame * 2));
-      let targetY2 = Math.floor(touches[0].event.pageY / (this.boxWidth + this.marginGame * 2));
-      checkedID = targetX2 + targetY2 * howManyInRow;
+      checkedID = calculateBoxFromCoord(touches[0].event.pageX, touches[0].event.pageY);
 
       //we set up new index to show up
       this.clickedP = checkedID;
 
       //simple timeout to make sure user see chosen pair
-      if (checkedID < howManyInRow * HowManyInColumn) { //be sure if not fire unnesesery
-        entities[checkedID].position = [
-          this.marginGame + targetX2 * this.boxWidth + ((this.marginGame * 2) * (targetX2)),
-          this.marginGame + targetY2 * this.boxWidth + ((this.marginGame) * (targetY2))
-        ];
+      if (checkedID < howManyInRow * HowManyInColumn) { //be sure 'if' won't fire unnesesery
+        entities[checkedID].refresh = true;  //we need to change any parameter to refresh object
 
         setTimeout(function() { //it will start after 1s.
-
           this.clickedP = this.clicked = -1;
 
-          this.opacityAll = 0;
-          entities[checkedID].position = [
-            this.marginGame + targetX2 * this.boxWidth + ((this.marginGame * 2) * (targetX2)),
-            this.marginGame + targetY2 * this.boxWidth + ((this.marginGame) * (targetY2))
-          ];
+          entities[checkedID].refresh = false;
           entities[currentID].position = [goBackX, goBackY];
 
           currentID = checkedID = -1;
@@ -92,11 +84,8 @@ const MoveFinger = (entities, {touches}) => {
       }
     }
   });
-
-  return entities;
+  return entities;  //we need to return entities to refresh screen when system starts
 };
-
-let stop = 0;
 
 export {
   MoveFinger

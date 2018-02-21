@@ -1,12 +1,10 @@
 import React from 'react';
 import {
   Platform,
-  ToastAndroid,
   View,
   Text,
   Button,
   StyleSheet,
-  TextInput,
   StatusBar
 } from 'react-native';
 import Communications from 'react-native-communications';
@@ -20,7 +18,6 @@ callMe = () => {
 }
 let numberToCall = "2123";
 
-
 // here we use GameEngine component
 const Screen1 = () => (
   <GameEngine
@@ -28,10 +25,8 @@ const Screen1 = () => (
       systems={[MoveFinger]}
       entities={entitiesGlobal}   // this is 'mapping like' entry
     >
-
-      <StatusBar hidden={true} />
-
-    </GameEngine>
+    <StatusBar hidden={true} />
+  </GameEngine>
 );
 
 const styles = StyleSheet.create({
@@ -40,6 +35,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF"
   }
 });
-
 
 export default Screen1;

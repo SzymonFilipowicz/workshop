@@ -32,7 +32,6 @@ function loadAllDialogues() {
 this.currentDialogue = [];
 this.currentSpeech = [];
 let dialogueID=0;
-//    var speechID = -1;    //we don't need to initiate it in fact
 
 function getNewDialogue(id) {
   return this.allDialogues[id];
@@ -42,7 +41,7 @@ class DialogueLayout extends React.Component {
   constructor(props) {
     super(props);
 
-    this._handleAddButton = this._handleAddButton.bind(this);
+  //  this._handleAddButton = this._handleAddButton.bind(this);
 
     this.state = {
       optionsGraphic: [],
@@ -51,14 +50,16 @@ class DialogueLayout extends React.Component {
       dialogueText: this.loadDialogueJson(),
     };
 
+    //we can push values into states
     this.state.optionsGraphic.push({tittle:"FOV", key:0});
     this.state.optionsGraphic.push({tittle:"BLOOD", key:1});
     this.state.optionsGraphic.push({tittle:"BLUR", key:2});
   }
 
+  //we can set up default values for arguments
   _handleAddButton(howMany=1, start=false) {
     let newly_added_data;
-    let textToAdd = "";
+    //let textToAdd = "";   //we dont need to declare variables in js but we should
     for(let i=0; i<howMany; i++){
       let characterID = 0;
       if(start)
@@ -73,10 +74,7 @@ class DialogueLayout extends React.Component {
         let coordName = this.currentDialogue[characterID].character;
         if(charactersPosition[coordName]!=undefined)
           tempCoord = charactersPosition[coordName];
-        /*if(tempCoord==undefined) {
-          tempCoord.x = defaultX;
-          tempCoord.y = defaultY;
-        }*/
+
         switch(characterLabelMode) {
           case 1:
             textToAdd = coordName+": " + textToAdd;
@@ -87,10 +85,7 @@ class DialogueLayout extends React.Component {
           default :
             break;
         }
-
       }
-
-
 
       newly_added_data = { key:dialogueID, x:tempCoord.x, y:tempCoord.y, title: textToAdd, content: 'new content goes here' };
       this.state.data.push(newly_added_data);
@@ -105,7 +100,7 @@ class DialogueLayout extends React.Component {
   _handleRemoveButton(key) {
       let result = this.state.data.filter( (data) => data.key !== key );
       this.setState({
-          data: result,
+          data: result,       // ',' at the end is NOT bringing error but can mislead
       });
   }
 
@@ -116,6 +111,7 @@ class DialogueLayout extends React.Component {
         data: []
     });
   }
+
   endTalk() {
     data= [];
     speechID=-1;
@@ -147,7 +143,7 @@ class DialogueLayout extends React.Component {
       this.endTalk();
     }
   }
-  startDialogue = ()  =>   {
+  startDialogue = () => {      //call this function to start loaded dialogue
     this.cleanAllDialogueOptions();
     this.loadDialogueJson();
     if(dialogueScrollMode==0) {
@@ -157,11 +153,13 @@ class DialogueLayout extends React.Component {
       speechID=0;
       this._handleAddButton(this.currentSpeech.connections.length-1, false); //1 because it is (true) starting speech
     }
-    //call this function to start loaded dialogue
-      }
+  }
 
   loadDialogueJson = ()  =>  {
-    loadAllDialogues();
+    //we need to make sure we have current dialogue loaded
+    if(!this.currentDialogue)
+      loadAllDialogues();
+
     this.changeDialogueBase(startingID);
     this.currentSpeech = this.currentDialogue[0]; //0 is starting text
     if(Array.isArray(this.currentSpeech.connections)==false)
