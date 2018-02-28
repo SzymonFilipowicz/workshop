@@ -12,26 +12,22 @@ homeButtonClicked = (navigate) => {                     // this function is glob
   navigate('Screen1')                                   // that way we can handle navigator
 };                                                      // from one file
 
-this.clicked = this.clickedP = -1;
+
 
 /* we don't need to point at 'this' because it's default pointer across all documents
   when we are out of component */
 let numberOfColors = (this.howManyInRow*HowManyInColumn)/2;
 //creating collection of memory boxes. In one iteration we create two matching boxes
 this.collection = [];
-for(let i=0; i<numberOfColors; i++)
-{
-  this.collection[i*2]=i;
-  this.collection[i*2+1]=i;
-}
-shuffle(this.collection);
 
-getCol = (index) => {
-  if(index==clicked || index==clickedP)
-    return this.entitiesGlobal[index]["pair"];
-  else
-    return numberOfColors;    //this is last index of color collection
-}
+
+
+
+
+
+
+
+
 
 //we are creating objects used to present memory boxes
 this.entitiesGlobal = new Object(); // this needs to be object, so can be {} as well
@@ -52,5 +48,4 @@ for(let i=0; i<this.HowManyInColumn*this.howManyInRow; i++) {
   this.entitiesGlobal[i]["position"][0]=x;
   this.entitiesGlobal[i]["position"][1]=this.marginGame+y;
 
-  this.entitiesGlobal[i]["refresh"]=false;
 }

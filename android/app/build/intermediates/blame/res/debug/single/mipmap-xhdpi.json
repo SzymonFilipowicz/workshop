@@ -8,6 +8,10 @@
         "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/Workshop/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
+        "merged": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/From Git/workshop/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/GitHub/workshop/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
         "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/GitHub/workshop/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     }

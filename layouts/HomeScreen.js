@@ -10,7 +10,7 @@ import TuringLayout from '../scripts/turing';
 
 let stringToShow="Welcome Home23";
 let goToNextBtnStr="Next Screen";
-let dialogueData = "BBB";
+let dialogueData = "Passing this ";
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -19,13 +19,24 @@ class HomeScreen extends React.Component {
       btnText: 'Simple test',
       status:true
     };
+
+    try {
+      alert(this.bob+" vs "+bob);
+    }catch(ex) {
+      bob = 'a';
+      this.bob = 'b';
+      alert(bob+" vs "+this.bob);
+      //bob = null;
+      //alert((bob===null)+" vs "+(bob==undefined)+" vs "+(bob===undefined))
+    }
+
+
   }
   toggleStatus = () => {
 
     this.setState({
       status: !this.state.status
     });
-    //toogleDialogue();
     dialogueData = "lololo"
   }
   btnClicked = () => {

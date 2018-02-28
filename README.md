@@ -12,92 +12,73 @@ sudo react-native run-android
 </code></pre><br>
 
 To do in practise branch :
-1. Remove error from re-entering into game
-2. Remove coverage boxes in game
-3. Fix if clausule in Turing.js
-4. Fix collection creatinig for game in index.js
-5. Add action calling from child to parent to change layout into game
-6. Add some unique options component into Graphic dialogue 
+1. Fix Turing machine (watch out it will break app, use double R)
+2. Add unique components into Graphic option and fix 'back' buttons to properly lead
+3. Prepare pair indexes for boxes in index.js
+4. Make memory game actually show true colors
 
-Solve :
-1. Error appears because we have index of every box stored in local variable (this.whatAlready=whatAlready).
-Because react is calling constructor function every time it's rebuild, we need to zero our index every time we finish constructing all boxes. To do this, add at the end of Rect constructor function code below :
-<pre><code>
-  if(whatAlready==(howManyInRow*HowManyInColumn))  // We can't use 'this.' because it's pointg at component
-      restartIndex= true;                             // we need to set up flag for next Rect call
-</code></pre>
-Code above is setting flag every time we reach maximum number of boxes on the screen. Next thing to do is zero our counter at the beggining of constructor. 
-<pre><code>
-  if(restartIndex) {         // When flag is set up it means user re-entered to this view
-      whatAlready=0;
-      restartIndex=false;
-  }
-</code></pre><br><br>
-2. Add 'brown' color at the end of colors collection in renderer.js.
-Next thing we can do is add two flags (because only two boxes can show theyre two colors at the same time) into index.js (where our getCol function take place)
-<pre><code>
-this.clicked = -1;                       
-this.clickedP = -1;
-</code></pre>
+TURING (ZADANIE 1) :
+	-zmiany na Y (37 linijka)
+		stream = stream.substring(0, currentIndex) + 'Y' + stream.substring(currentIndex+1);
+	-przejście przez poprzednie Y
+		52 linijka:
+			else if(currentLetter=='Y')
+		62, 83,  linijka:
+		 	|| currentLetter=='Y'
 
-These will point index of boxes we want to see. To do this we need to set up proper value every time we interact with any box 
-First flag need to be set up when we starting press any box, so add tihs after 'currentID' is known in
-'touches.filter(t => t.type === "start").forEach(t => {})' in systems.js<br />
-<pre><code>
-  this.clicked = currentID; </code></pre>
-And 2nd flag need to be when we stop pressing screen after checkedID is calculeted in 'touches.filter(t => t.type === "end").forEach(t => {})'<br />
-<pre><code>this.clickedP = checkedID;</code></pre>
-If we have this, we just need to configure getCol function to properly return variables <br /><br />
-<pre><code>
-  getCol = (index) => {
-  if(index==clicked || index==clickedP)
-    return this.entitiesGlobal[index]["pair"];
-  else
-    return numberOfColors;    //this is last index of color collection
-}
-</code></pre>
-After that we can just remove coverage boxes in layout and remove opacity property from boxes. 
-<br><br>
-6. Firstly we need to add another mapped component. First declare new array as state
+DIALOGUE.JS (ZADANIE 2) :
+-renderif
+	W 211 linijce można dodać coś w tym stylu:
+	{renderIf(this.currentSpeech.text === "Graphic")(
+              <View>
+              {options_button}
+              <Slider
+                value={this.state.value}
+                onValueChange={(value) => this.setState({value})} />
+              <Text>Value: {this.state.value}</Text>
+              <Button style={{ flex: 1}}
+                title="back"
+                onPress={() => this.goBackToOptions()}
+              />
+              </View>
+         )}
 
-Then add new mapped component as new variable 
-<pre><code>
-let options_button = this.state.optionsGraphic.map( (optionsGraphic, index) => {
-        return (
-          	&lt;View style={{ left:0, top:0, width:"50%" }} key={optionsGraphic.key}>
-            	&lt;Button style={{ flex:1, width:"50%" }}  key={optionsGraphic.key} title={optionsGraphic.tittle}
-              onPress={ () => this.nativeFunc() } />
-            	&lt;Picker
-              selectedValue={this.state.language}
-              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
-              	&lt;Picker.Item label="Java" value="java" />
-              	&lt;Picker.Item label="JavaScript" value="js" />
-            	&lt;/Picker>
-          	&lt;/View>
-        )
-    });
-            </code></pre>
-Next, create renderif file as follow 
-<pre><code>
-'use strict';
-const isFunction = input => typeof input === 'function';
-export default predicate => elemOrThunk =>
-  predicate ? (isFunction(elemOrThunk) ? elemOrThunk() : elemOrThunk) : null;
-        </code></pre>
-Then use it in render section of DialogueLayout 
-<pre><code>
-{renderIf(this.currentSpeech.text === "Graphic")(
-              options_button
-)}
-{renderIf(this.currentSpeech.text === "Graphic")(
-    	&lt;Button style={{ flex: 1}}
-        title="back"
-        onPress={this.startDialogue}
-    />
-)}
-</code></pre>
-  As final touch, add code above at the beggining of 'startDialogue' function 
-  <pre><code>
-  this.loadDialogueJson();
-  </code></pre>
+INDEX.JS (ZADANIE 3 do linijki 22) :
+	for(let i=0; i<numberOfColors; i++)
+	{
+		this.collection[i*2]=i;
+		this.collection[i*2+1]=i;
+	}
+	shuffle(this.collection);
 
+GŁÓWNE ZADANIE :
+index.js :
+	1. Zadeklaruj zmienne dla obu wybranych kwadratów (linijka 15)
+	this.clicked = -1;                       
+	this.clickedP = -1;
+
+	2. Stwórz funkcje zwracającą odpowiedni kolor (linijka 24)
+	getCol = (index) => {
+	  if(index==clicked || index==clickedP)
+	    return this.entitiesGlobal[index]["pair"];
+	  else
+	    return numberOfColors;    //this is last index of color collection
+	}
+system.js :
+	3. Ustaw odpowiednie wartości w systems.js
+		23 linijka:
+			this.clicked = currentID;
+		40 linijka:
+			this.clickedP = checkedID;
+renderer.js :
+	4. Musimy zmienić style w View na dynamiczny background-color (45 linijka) :
+		backgroundColor: colors[getCol(this.whatAlready)],
+
+	5. Nadal nie działa poprawnie, czemu? (musimy zmienić state, ale dla czego dla pierwszego kwadratu nie? - bo zmieniamy jego stan pozycji)
+		index.js (50 linijka) :
+			this.entitiesGlobal[i]["refresh"]=false;
+		systems.js :
+			44 linijka :
+				entities[checkedID].refresh = true;
+			49 linijka :
+				entities[checkedID].refresh = false;

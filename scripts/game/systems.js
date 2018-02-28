@@ -20,7 +20,7 @@ const MoveFinger = (entities, {touches}) => {
       //we need to recognize what box are we pressing
       currentID = calculateBoxFromCoord(touches[0].event.pageX, touches[0].event.pageY);
       //we set up clicked index to show up
-      this.clicked = currentID;
+
 
       //we need to save position of box in case of false compare
       if (currentID < howManyInRow * HowManyInColumn) {
@@ -37,16 +37,16 @@ const MoveFinger = (entities, {touches}) => {
       checkedID = calculateBoxFromCoord(touches[0].event.pageX, touches[0].event.pageY);
 
       //we set up new index to show up
-      this.clickedP = checkedID;
+
 
       //simple timeout to make sure user see chosen pair
       if (checkedID < howManyInRow * HowManyInColumn) { //be sure 'if' won't fire unnesesery
-        entities[checkedID].refresh = true;  //we need to change any parameter to refresh object
+
 
         setTimeout(function() { //it will start after 1s.
           this.clickedP = this.clicked = -1;
 
-          entities[checkedID].refresh = false;
+          
           entities[currentID].position = [goBackX, goBackY];
 
           currentID = checkedID = -1;

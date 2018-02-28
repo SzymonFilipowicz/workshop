@@ -34,7 +34,7 @@ class TuringLayout extends PureComponent {
     }
   }
   changeIntoJunk() {
-    stream = stream.substring(0, currentIndex) + 'Y' + stream.substring(currentIndex+1);
+
   }
   // walking thru whole word and changing state according to actual state and checking letter
   goNext = () => {
@@ -49,7 +49,7 @@ class TuringLayout extends PureComponent {
           this.changeIntoJunk();            //remember to use 'this' as pointer into component itself
           currentIndex++;                   // We chacked current letter so we can increase index
           return 1;                         // We accept this situation and changing to state 1
-        } else if(currentLetter=='Y') {     // If it's not the first iteration,
+        } else if(false) {     // If it's not the first iteration,
           currentIndex++;                   // we need to move thru 'Y' that were 'a' before
           return 0;                         // We still need to find 'a'
         } else if(currentLetter=='X') {     // When we reached 'X' it means the word was empty
@@ -59,7 +59,7 @@ class TuringLayout extends PureComponent {
         }
         break;
       case 1 :                              // We are at state 1 (looking for 'b')
-        if(currentLetter=='a' || currentLetter=='Y') {  //going thru future 'a' and 'Y' that was 'b' before
+        if(currentLetter=='a') {  //going thru future 'a' and 'Y' that was 'b' before
           currentIndex++;
           return 1;
         } else if(currentLetter=='b') {     //changing first 'b'
@@ -80,7 +80,7 @@ class TuringLayout extends PureComponent {
         }
         break;
       case 3 :
-        if(currentLetter=='b' || currentLetter=='Y') {  //going thru 'b' and 'Y'
+        if(currentLetter=='b') {  //going thru 'b' and 'Y'
           currentIndex++;
           return 3;
         } else if(currentLetter=='c') {                 //changing first 'c'
@@ -123,9 +123,9 @@ class TuringLayout extends PureComponent {
     return (
       <View>
         <Button
-          title={goToNextBtnStr}      // react brackets!
+          title={goToNextBtnStr}
           onPress={() =>
-            this.startMoving()        // Start checking word in 'stream' variable
+            this.startMoving()
           }
         />
       </View>

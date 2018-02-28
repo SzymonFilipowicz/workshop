@@ -4,6 +4,10 @@
         "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/Workshop/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
     },
     {
+        "merged": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
         "merged": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/GitHub/workshop/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
         "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/GitHub/workshop/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     },
@@ -18,6 +22,10 @@
     {
         "merged": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/GitHub/workshop/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
         "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/GitHub/workshop/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/home/maupa/Desktop/Praca/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     },
     {
         "merged": "/home/maupa/Desktop/Work/InFullMobile/reactNative/From Git/workshop/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",

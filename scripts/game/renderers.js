@@ -42,7 +42,7 @@ class Rect extends PureComponent {
     const y = this.props.position[1] ; //we signed this values in index.js
     return (
       <View>
-        <View style={[styles.rect, { backgroundColor: colors[getCol(this.whatAlready)], left: x, top: y }]} />
+        <View style={[styles.rect, { left: x, top: y }]} />
       </View>
     );
   }
